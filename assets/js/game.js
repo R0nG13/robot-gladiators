@@ -10,6 +10,7 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
+
 var enemyHealth = 50;
 var enemyAttack = 12;
 var enemyNames = ["Roborto", "Amy Android", "Ronbo Trumble"];
@@ -32,7 +33,7 @@ var fight = function(enemyName) {
         // subtract money from playerMoney for skipping
         playerMoney = playerMoney - 10;
         console.log("playerMoney", playerMoney)
-        break;
+        
       }
     }
 
@@ -68,8 +69,10 @@ var fight = function(enemyName) {
       break;
     } else {
       window.alert(playerName + ' still has ' + playerHealth + ' health left.');
+
     }
   }
+  startGame();
 };
 
 var startGame = function() {
@@ -94,21 +97,21 @@ for (var i = 0; i < enemyNames.length; i++) {
 
     // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
     fight(pickedEnemyName);
-    break;
   }
+  // if player is still alive and we're not at the last enemy in the array
+if (playerHealth > 0 && i < enemyNames.length - 1) {
+  shop();
+}
   else {
     window.alert("You have lost your robot in battle! Game Over!");
     break;
     }
   }
-
-  
-  //var pickedEnemyName = enemyNames[i++];
-  //enemyHealth = 50;
-  //fight(pickedEnemyName);
-// after the loop ends, player is either out of health or enemies to fight, so run the endGame function
-endGame();
+  endGame();
 };
+// after the loop ends, player is either out of health or enemies to fight, so run the endGame function
+
+
 
 // function to end the entire game
 var endGame = function() {
@@ -131,6 +134,9 @@ else {
 }
 };
 
+var shop = function() {
+  console.log("entered the shop");
+};
 
 // start the game when the page loads
 startGame();
